@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de Mí - Mi Página Personal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #667eea;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        h2 {
+            color: #764ba2;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.1em;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #667eea;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .hobby-img {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        ul li, ol li {
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus, 
+        input[type="email"]:focus, 
+        select:focus, 
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        select[multiple] {
+            height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>¡Hola! Soy yo</h1>
+            <p class="subtitle">Estudiante de Ingeniería | Amante del Voleibol | Dulces Adicta</p>
+        </header>
+
+        <div class="main-content">
+            <section class="section">
+                <h2>Sobre Mí</h2>
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b332c1ef?w=400&h=400&fit=crop&crop=face" alt="Mi foto de perfil" class="profile-img">
+                
+                <p>¡Hola! Soy una joven de 19 años que está descubriendo el mundo y construyendo su futuro. Actualmente estoy soltera y enfocada en mis estudios universitarios, donde curso la carrera de Ingeniería.</p>
+                
+                <p>Me considero una persona apasionada y determinada. Creo firmemente que la educación es la herramienta más poderosa para cambiar el mundo, y por eso me dedico con mucho esfuerzo a mis estudios. La ingeniería me fascina porque combina creatividad, lógica y la posibilidad de crear soluciones que impacten positivamente en la sociedad.</p>
+                
+                <p>Además de mis estudios, tengo dos grandes pasiones que llenan mi vida de alegría: el voleibol y los dulces. Estas aficiones me ayudan a mantener un equilibrio entre el trabajo académico y la diversión.</p>
+            </section>
+
+            <section class="section">
+                <h2>Mis Pasatiempos</h2>
+                
+                <h3>🏐 Voleibol</h3>
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="Voleibol" class="hobby-img">
+                <p>El voleibol es mucho más que un deporte para mí; es mi pasión y mi escape. Me encanta la dinámica del juego, el trabajo en equipo y la adrenalina de cada punto disputado. Practico regularmente y participo en torneos universitarios.</p>
+
+                <h3>🍰 Dulces</h3>
+                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&h=300&fit=crop" alt="Dulces variados" class="hobby-img">
+                <p>Confieso que tengo una debilidad por los dulces. Desde pasteles artesanales hasta chocolates gourmet, disfruto explorando diferentes sabores y texturas. También me gusta experimentar horneando mis propias creaciones.</p>
+            </section>
+        </div>
+
+        <section class="section full-width">
+            <h2>Mi Información Académica</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Detalle</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Carrera</td>
+                        <td>Ingeniería</td>
+                        <td>En curso</td>
+                    </tr>
+                    <tr>
+                        <td>Año académico</td>
+                        <td>Primer/Segundo año</td>
+                        <td>Activo</td>
+                    </tr>
+                    <tr>
+                        <td>Materias favoritas</td>
+                        <td>Matemáticas, Física, Programación</td>
+                        <td>Excelente rendimiento</td>
+                    </tr>
+                    <tr>
+                        <td>Proyectos</td>
+                        <td>Desarrollo de aplicaciones</td>
+                        <td>En desarrollo</td>
+                    </tr>
+                    <tr>
+                        <td>Objetivo</td>
+                        <td>Graduarme con honores</td>
+                        <td>En progreso</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="main-content">
+            <section class="section">
+                <h2>Mis Metas y Objetivos</h2>
+                
+                <h3>Objetivos Académicos:</h3>
+                <ol>
+                    <li>Mantener un promedio académico sobresaliente</li>
+                    <li>Completar proyectos de investigación relevantes</li>
+                    <li>Participar en programas de intercambio</li>
+                    <li>Obtener certificaciones técnicas complementarias</li>
+                    <li>Graduarme en el tiempo establecido</li>
+                </ol>
+
+                <h3>Metas Deportivas:</h3>
+                <ol>
+                    <li>Formar parte del equipo universitario de voleibol</li>
+                    <li>Participar en competencias regionales</li>
+                    <li>Mejorar mi técnica de ataque</li>
+                    <li>Desarrollar habilidades de liderazgo en cancha</li>
+                </ol>
+            </section>
+
+            <section class="section">
+                <h2>Mis Cualidades</h2>
+                
+                <h3>Fortalezas Personales:</h3>
+                <ul>
+                    <li>Determinación y perseverancia</li>
+                    <li>Capacidad de trabajo en equipo</li>
+                    <li>Pensamiento analítico y lógico</li>
+                    <li>Creatividad para resolver problemas</li>
+                    <li>Adaptabilidad a nuevos desafíos</li>
+                    <li>Comunicación efectiva</li>
+                    <li>Liderazgo natural</li>
+                </ul>
+
+                <h3>Habilidades Técnicas:</h3>
+                <ul>
+                    <li>Programación básica</li>
+                    <li>Análisis matemático</li>
+                    <li>Diseño asistido por computadora</li>
+                    <li>Investigación científica</li>
+                    <li>Gestión de proyectos</li>
+                </ul>
+            </section>
+        </div>
+
+        <section class="form-section full-width">
+            <h2>¡Conectemos!</h2>
+            <p>Si quieres conocerme mejor, colaborar en algún proyecto o simplemente charlar, no dudes en contactarme a través de este formulario:</p>
+            
+            <form id="contactForm">
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="universidad">Universidad/Institución:</label>
+                    <input type="text" id="universidad" name="universidad">
+                </div>
+
+                <div class="form-group">
+                    <label for="intereses">Temas de interés (selecciona múltiples opciones):</label>
+                    <select id="intereses" name="intereses" multiple>
+                        <option value="ingenieria">Ingeniería y Tecnología</option>
+                        <option value="voleibol">Voleibol y Deportes</option>
+                        <option value="reposteria">Repostería y Cocina</option>
+                        <option value="estudios">Estudios y Académico</option>
+                        <option value="proyectos">Colaboración en Proyectos</option>
+                        <option value="networking">Networking Profesional</option>
+                        <option value="intercambio">Programas de Intercambio</option>
+                        <option value="investigacion">Investigación</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivo">Motivo de contacto:</label>
+                    <select id="motivo" name="motivo">
+                        <option value="">Selecciona una opción</option>
+                        <option value="colaboracion">Colaboración académica</option>
+                        <option value="amistad">Amistad</option>
+                        <option value="deporte">Actividades deportivas</option>
+                        <option value="proyecto">Propuesta de proyecto</option>
+                        <option value="networking">Networking profesional</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntame más sobre ti y cómo podemos conectar..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const universidad = document.getElementById('universidad').value;
+            const intereses = Array.from(document.getElementById('intereses').selectedOptions).map(option => option.text);
+            const motivo = document.getElementById('motivo').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            // Validación básica
+            if (!nombre || !email) {
+                alert('Por favor, completa los campos obligatorios (Nombre y Email).');
+                return;
+            }
+            
+            // Simular envío del formulario
+            alert(`¡Gracias por tu mensaje, ${nombre}!\n\nHe recibido tu información:\n- Email: ${email}\n- Intereses: ${intereses.join(', ')}\n- Motivo: ${motivo}\n\n¡Te contactaré pronto!`);
+            
+            // Limpiar formulario
+            this.reset();
+        });
+
+        // Efectos de hover para las secciones
+        document.querySelectorAll('.section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
